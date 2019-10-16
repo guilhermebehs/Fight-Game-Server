@@ -17,12 +17,13 @@ import java.util.logging.Logger;
  *
  * @author guilherme.behs
  */
-public class Server {
+public class Server implements Runnable {
 
     static List<PlayerConectado> players = new ArrayList<>();
     static int id = 1;
-
-    public static void main(String[] args) {
+    
+    public void iniciar(){
+      
         try {
             ServerSocket ss = new ServerSocket(8200);
             Socket socketNovoPlayer;
@@ -35,6 +36,13 @@ public class Server {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
     }
+
+    @Override
+    public void run() {
+        iniciar();
+    }
+
+  
 }
